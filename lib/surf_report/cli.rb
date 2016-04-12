@@ -1,8 +1,3 @@
-require_relative "../surf_report/scraper.rb"
-require_relative "../surf_report/report.rb"
-require 'colorize'
-
-require 'pry'
 class SurfReport::CLI
 
   def call
@@ -23,13 +18,13 @@ class SurfReport::CLI
     puts "\n"
     @days = SurfReport::Report.all
     @days.each.with_index(1) do |day, i|
-      puts "#{i}.".colorize(:magenta) + "#{day.date}".colorize(:black) + " - #{day.forecast.colorize(:blue)}"
+      puts "#{i}. ".colorize(:magenta) + "#{day.date}".colorize(:black) + " - #{day.forecast.colorize(:blue)}"
     end
   end
 
   def menu
     input = nil
-    while input != "exit"
+    while input != "later"
       puts "\n"
       puts "What number would you like to see a detailed report for? Oh yeah...you can type 'list' to see the days again or 'later' to get outta here!"
       input = gets.strip.downcase
