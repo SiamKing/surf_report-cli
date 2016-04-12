@@ -5,7 +5,7 @@ class Scraper
     days = doc.css("div.day-slider-container")
     # children indexes are odd numbers - 1, 3, & 5 so I'm setting them equal to their own array
     surf_days = [days.children[1], days.children[3], days.children[5]]
-    # iterating to create days with date, forecast, wave size, wave description, and swell direction
+    # iterating to create a hash of days with date, forecast, wave size, wave description, and swell direction
     surf_days.collect do |day|
       { :date => day.children.css("span")[0].text,
         :forecast => day.css("strong").text,
